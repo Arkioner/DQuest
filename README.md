@@ -1,0 +1,1 @@
+This is the very beginning of D Quest. Where all quest are about creatures from D World. 
