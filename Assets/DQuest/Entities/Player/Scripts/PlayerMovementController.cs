@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Sprites.Player.Scripts
+namespace DQuest.Entities.Player.Scripts
 {
     public class PlayerMovementController : MonoBehaviour
     {

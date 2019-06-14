@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Sprites.Log.Scripts
+namespace DQuest.Entities.Log.Scripts
 {
     public class LogMovementController : MonoBehaviour
     {

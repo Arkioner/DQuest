@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Sprites.Log.Scripts
+namespace DQuest.Entities.Log.Scripts
 {
     public class LogSpriteAnimatorController : SpriteAnimatorController
     {
