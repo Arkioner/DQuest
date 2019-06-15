@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  web:
+    image: nginx:alpine
+    ports: 
+      - 8468:80
+    volumes:
+      - ./Builds/Web:/usr/share/nginx/html/
+    network_mode: bridge

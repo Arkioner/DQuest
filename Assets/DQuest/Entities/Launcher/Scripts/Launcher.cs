@@ -17,12 +17,12 @@ namespace DQuest.Entities.Launcher.Scripts
         public void OnClick_ExitBtn()
         {
             PhotonNetwork.Disconnect();
+            Application.Quit();
         }
 
         public override void OnConnectedToMaster()
         {
             base.OnConnectedToMaster();
-            connectedScreen.SetActive(true);
             PhotonNetwork.JoinLobby(TypedLobby.Default);
         }
 

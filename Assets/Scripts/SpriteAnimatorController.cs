@@ -1,23 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class SpriteAnimatorController : MonoBehaviour
 {
-        
     [SerializeField] private float animatorSpeedFactor = 1f;
 
-    protected Animator Animator;
+    [SerializeField] protected Animator Animator;
 
     private readonly Dictionary<char, int> _directionFaces =
         new Dictionary<char, int> {{'s', 0}, {'e', 1}, {'n', 2}, {'w', 3}};
         
     private static readonly int Moving = Animator.StringToHash("moving");
     private static readonly int Direction = Animator.StringToHash("direction");
-    // Start is called before the first frame update
-    void Start()
-    {
-        Animator = GetComponent<Animator>();
-    }
 
     public virtual void UpdateAnimator(float deltaX, float deltaY, float speed)
     {

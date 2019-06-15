@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7344974428052841671}
   - component: {fileID: 7344974428052841670}
   m_Layer: 0
-  m_Name: Log 1
+  m_Name: Log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeedFactor: 1
+  Animator: {fileID: 7344974428052841691}
 --- !u!114 &7344974428052841670
 MonoBehaviour:
   m_ObjectHideFlags: 0
