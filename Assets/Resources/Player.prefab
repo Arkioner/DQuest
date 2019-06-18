@@ -321,4 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  rb2D: {fileID: 3229465656393952527}
+  spriteAnimatorController: {fileID: 3229465656393952525}
   playerCamera: {fileID: 3229465655083963872}

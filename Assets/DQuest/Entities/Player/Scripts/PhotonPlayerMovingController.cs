@@ -7,22 +7,23 @@ namespace DQuest.Entities.Player.Scripts
     public class PhotonPlayerMovingController : MonoBehaviourPun, IPunObservable
     {
         [SerializeField] private float speed = 10f;
-
-        private Rigidbody2D _rb2D;
-        private SpriteAnimatorController _spriteAnimatorController;
-        private PhotonView _photonView;
-        public Camera playerCamera;
-
-        private Vector3 _smoothMove;
+        [SerializeField] private Rigidbody2D rb2D;
+        [SerializeField] private SpriteAnimatorController spriteAnimatorController;
+        [SerializeField] private Camera playerCamera;
+        private Vector3 _nextPosition;
 
         private void Start()
         {
-            _rb2D = GetComponent<Rigidbody2D>();
-            _spriteAnimatorController = GetComponent<SpriteAnimatorController>();
-            _photonView = GetComponent<PhotonView>();
-            if (_photonView.IsMine)
+            if (photonView.IsMine)
             {
+                PhotonNetwork.SendRate = 20;
+                PhotonNetwork.SerializationRate = 15;
                 SwitchCameras();
+            }
+            else
+            {
+                rb2D.isKinematic = true;
+                _nextPosition = transform.position;
             }
         }
 
@@ -32,17 +33,20 @@ namespace DQuest.Entities.Player.Scripts
             playerCamera.gameObject.SetActive(true);
         }
 
-
         // Update is called once per frame
         void FixedUpdate()
         {
-            if (_photonView.IsMine)
+            if (photonView.IsMine)
             {
                 ProcessInputs();
             }
-            else
+        }
+
+        private void Update()
+        {
+            if (!photonView.IsMine)
             {
-                SmoothMovement();
+                transform.position = _nextPosition;
             }
         }
 
@@ -53,13 +57,15 @@ namespace DQuest.Entities.Player.Scripts
 
             Vector2 direction = new Vector2(deltaX, deltaY);
 
-            _rb2D.velocity = direction * speed;
-            _spriteAnimatorController.UpdateAnimator(deltaX, deltaY, speed);
+            rb2D.velocity = direction * speed;
+            spriteAnimatorController.UpdateAnimator(deltaX, deltaY, speed);
+            photonView.RPC("UpdateAnimator", RpcTarget.Others, deltaX, deltaY, speed);
         }
 
-        private void SmoothMovement()
+        [PunRPC]
+        private void UpdateAnimator(float deltaX, float deltaY, float speed)
         {
-            transform.position = Vector3.Lerp(transform.position, _smoothMove, Time.deltaTime * 10);
+            spriteAnimatorController.UpdateAnimator(deltaX, deltaY, speed);
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -70,7 +76,7 @@ namespace DQuest.Entities.Player.Scripts
             }
             else if (stream.IsReading)
             {
-                _smoothMove = (Vector3) stream.ReceiveNext();
+                _nextPosition = (Vector3) stream.ReceiveNext();
             }
         }
     }
