@@ -16,7 +16,7 @@ namespace DQuest.Entities.Log.Scripts
 
         private void UpdateAnimatorSetIsAwake(bool awake)
         {
-            Animator.SetBool(Awake, awake);
+            animator.SetBool(Awake, awake);
         }
     }
 }

@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorSpeedFactor: 0.25
-  Animator: {fileID: 3229465656393952521}
+  animator: {fileID: 3229465656393952521}
 --- !u!70 &3229465656393952524
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

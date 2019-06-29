@@ -6,7 +6,7 @@ public class SpriteAnimatorController : MonoBehaviour
 {
     [SerializeField] private float animatorSpeedFactor = 1f;
 
-    [SerializeField] protected Animator Animator;
+    [SerializeField] protected Animator animator;
 
     private readonly Dictionary<char, int> _directionFaces =
         new Dictionary<char, int> {{'s', 0}, {'e', 1}, {'n', 2}, {'w', 3}};
@@ -42,16 +42,16 @@ public class SpriteAnimatorController : MonoBehaviour
 
     private void UpdateAnimatorSetDirection(int faceDirection)
     {
-        Animator.SetInteger(Direction, faceDirection);
+        animator.SetInteger(Direction, faceDirection);
     }
 
     private void UpdateAnimatorSetIsMoving(bool moving)
     {
-        Animator.SetBool(Moving, moving);
+        animator.SetBool(Moving, moving);
     }
 
     private void UpdateAnimatorSetAnimationSpeed(float animationSpeed)
     {
-        Animator.speed = animationSpeed;
+        animator.speed = animationSpeed;
     }
 }
