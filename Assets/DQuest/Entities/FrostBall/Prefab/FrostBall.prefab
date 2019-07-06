@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3818008013716717960}
   - component: {fileID: 4396146436993123646}
   - component: {fileID: 2547402596745056190}
+  - component: {fileID: 1404080534}
   m_Layer: 0
   m_Name: FrostBall
   m_TagString: Untagged
@@ -68,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 273747859
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 4290670506969140849, guid: dcadce6b99d1c3149997b32e27de8a74,
     type: 3}
@@ -114,7 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560ff31d0a3ea214482978bceaf74161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.35
+  speed: 0.15
+  ttl: 2
+  spriteAnimatorController: {fileID: 1404080534}
 --- !u!70 &2547402596745056190
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -125,9 +128,23 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2, y: 2}
   m_Direction: 0
+--- !u!114 &1404080534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3818008013716717961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37cf5aa6e0003574abb412c348b9dfa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorSpeedFactor: 1
+  animator: {fileID: 3818008013716717960}
