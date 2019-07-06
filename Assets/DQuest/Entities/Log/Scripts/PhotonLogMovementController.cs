@@ -1,5 +1,4 @@
-﻿using System;
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -62,11 +61,11 @@ namespace DQuest.Entities.Log.Scripts
 
             rb2D.velocity = direction * speed;
             spriteAnimatorController.UpdateAnimator(_deltaX, _deltaY, speed, _awake);
-            photonView.RPC("UpdateAnimator", RpcTarget.Others, _deltaX, _deltaY, speed, _awake);
+            photonView.RPC("UpdateAnimator", RpcTarget.Others, _deltaX, _deltaY, _awake);
         }
 
         [PunRPC]
-        private void UpdateAnimator(float deltaX, float deltaY, float speed, bool awake)
+        private void UpdateAnimator(float deltaX, float deltaY, bool awake)
         {
             spriteAnimatorController.UpdateAnimator(deltaX, deltaY, speed, awake);
         }
